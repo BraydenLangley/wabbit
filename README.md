@@ -4,10 +4,19 @@ A hosted [BRC-100](https://github.com/bitcoin-sv/BRCs/blob/master/wallet/0100.md
 wallet that integrators embed via a cross-origin iframe — like Stripe Elements,
 but for Bitcoin SV wallet operations.
 
-> **Status — proof of concept.** Read the [Security limitations](#security-limitations) section before
-> using this with anything you care about. The whole reason this project exists is
-> to make a great UX for BRC-100 in the browser; it does not change the structural
-> security ceiling of doing wallet auth on the open web.
+> ## ⚠️ Proof of concept — research & development only
+>
+> **This codebase is a research prototype, not a product.** It is published to
+> share the architecture and to make the structural security limitations of
+> doing BRC-100 wallet auth on the open web visible and discussable.
+>
+> - **Do not** use it to protect real funds, real identities, or anything you
+>   would mind losing.
+> - **Do not** deploy it as the auth surface for production users.
+> - **Do** read the [Security limitations](#security-limitations) section in full
+>   before running, forking, or integrating anything here.
+>
+> No warranty, no support, no security commitments. Use at your own risk.
 
 ## What's in here
 

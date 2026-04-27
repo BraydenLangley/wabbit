@@ -1,12 +1,15 @@
 # wabbit (wallet iframe host)
 
+> ⚠️ **Proof of concept — research & development only.** Not for production use.
+> See the [top-level README](../README.md#security-limitations) for the full
+> security caveats before running or forking this.
+
 The wabbit wallet itself — a Vite + React app that runs at its own origin
 (e.g. `https://wallet.wabbit.io`) and is embedded as a sandboxed iframe by
 integrator sites.
 
-See the [top-level README](../README.md) for architecture, the rest of the
-stack, and the security caveats you should read before relying on this for
-anything valuable.
+See the [top-level README](../README.md) for architecture and the rest of the
+stack.
 
 ## Run
 

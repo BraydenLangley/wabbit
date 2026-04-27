@@ -1,5 +1,9 @@
 # wabbit-stack
 
+> ⚠️ **Proof of concept — research & development only.** Not for production use.
+> See the [top-level README](../README.md#security-limitations) for the full
+> security caveats before deploying anything here.
+
 Local orchestration and deploy helpers for the wabbit hosted wallet demo.
 
 ## Layout

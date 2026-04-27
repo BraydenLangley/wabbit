@@ -1,5 +1,10 @@
 # wabbit-demo-todo
 
+> ⚠️ **Proof of concept — research & development only.** Demonstrates the
+> wabbit hosted-wallet integration pattern. Not for production use. See the
+> [top-level README](../README.md#security-limitations) for the full security
+> caveats.
+
 Example integrator app for [wabbit](../wabbit). Each task is encrypted with the
 user's wallet key and locked into a 1-sat PushDrop output; completing a task
 spends that output back.
@@ -37,5 +42,5 @@ add a task.
 | -------------------- | ------------------------ | -------------------------------- |
 | `VITE_WABBIT_ORIGIN` | `http://127.0.0.1:5173`  | Where to load the wabbit iframe. |
 
-See the [top-level README](../wabbit/README.md) for architecture, security
+See the [top-level README](../README.md) for architecture, security
 caveats, and the rest of the stack.
