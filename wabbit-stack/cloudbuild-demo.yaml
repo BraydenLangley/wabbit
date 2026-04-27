@@ -1,0 +1,18 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_IMAGE}'
+      - '-f'
+      - 'wabbit-demo-todo/Dockerfile'
+      - '--build-arg'
+      - 'VITE_WABBIT_ORIGIN=${_VITE_WABBIT_ORIGIN}'
+      - '.'
+images:
+  - '${_IMAGE}'
+options:
+  machineType: 'E2_HIGHCPU_8'
+substitutions:
+  _IMAGE: 'gcr.io/PROJECT_ID/wabbit-demo-todo'
+  _VITE_WABBIT_ORIGIN: 'https://wabbit.example.com'

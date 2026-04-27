@@ -1,0 +1,44 @@
+# Local-dev orchestration for wabbit + wabbit-demo-todo.
+# Build contexts point at the sibling directories so that `file:../wabbit-sdk`
+# resolves inside wabbit-demo-todo's build.
+#
+# Usage (from this directory):
+#   docker compose up --build
+#   open http://127.0.0.1:5173   # wabbit wallet (standalone)
+#   open http://127.0.0.1:5174   # demo app; iframes the wallet
+#
+# For GCR, each service's Dockerfile is self-contained and can be pushed
+# individually via `gcloud builds submit` — see ./README.md.
+
+services:
+  wabbit:
+    build:
+      context: ../wabbit
+      dockerfile: Dockerfile
+      args:
+        VITE_WAB_URL: ${VITE_WAB_URL:-https://wab.babbage.systems}
+        VITE_STORAGE_URL: ${VITE_STORAGE_URL:-https://storage.babbage.systems}
+        VITE_CHAIN: ${VITE_CHAIN:-main}
+        VITE_ADMIN_ORIGINATOR: ${VITE_ADMIN_ORIGINATOR:-admin.wabbit.local}
+        VITE_ALLOWED_PARENT_ORIGINS: ${VITE_ALLOWED_PARENT_ORIGINS:-}
+    environment:
+      PORT: "8080"
+    ports:
+      - "5173:8080"
+    restart: unless-stopped
+
+  demo:
+    build:
+      context: ..
+      dockerfile: wabbit-demo-todo/Dockerfile
+      args:
+        # At runtime the browser iframes the wallet via this origin.
+        # When running under compose, each browser hits localhost → use 127.0.0.1:5173.
+        VITE_WABBIT_ORIGIN: ${VITE_WABBIT_ORIGIN:-http://127.0.0.1:5173}
+    environment:
+      PORT: "8080"
+    ports:
+      - "5174:8080"
+    depends_on:
+      - wabbit
+    restart: unless-stopped

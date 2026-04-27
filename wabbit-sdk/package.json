@@ -1,0 +1,30 @@
+{
+  "name": "wabbit-sdk",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Client SDK for embedding the wabbit hosted wallet — Stripe-Elements-style iframe with a BRC-100 WalletInterface proxy.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch"
+  },
+  "peerDependencies": {
+    "@bsv/sdk": "^2.0.13"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "typescript": "~5.6"
+  }
+}

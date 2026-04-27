@@ -1,0 +1,30 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_IMAGE}'
+      - '-f'
+      - 'Dockerfile'
+      - '--build-arg'
+      - 'VITE_WAB_URL=${_VITE_WAB_URL}'
+      - '--build-arg'
+      - 'VITE_STORAGE_URL=${_VITE_STORAGE_URL}'
+      - '--build-arg'
+      - 'VITE_CHAIN=${_VITE_CHAIN}'
+      - '--build-arg'
+      - 'VITE_ADMIN_ORIGINATOR=${_VITE_ADMIN_ORIGINATOR}'
+      - '--build-arg'
+      - 'VITE_ALLOWED_PARENT_ORIGINS=${_VITE_ALLOWED_PARENT_ORIGINS}'
+      - '.'
+images:
+  - '${_IMAGE}'
+options:
+  machineType: 'E2_HIGHCPU_8'
+substitutions:
+  _IMAGE: 'gcr.io/PROJECT_ID/wabbit'
+  _VITE_WAB_URL: 'https://wab.babbage.systems'
+  _VITE_STORAGE_URL: 'https://storage.babbage.systems'
+  _VITE_CHAIN: 'main'
+  _VITE_ADMIN_ORIGINATOR: 'admin.wabbit.local'
+  _VITE_ALLOWED_PARENT_ORIGINS: ''

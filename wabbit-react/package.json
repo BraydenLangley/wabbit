@@ -1,0 +1,35 @@
+{
+  "name": "wabbit-react",
+  "version": "0.1.0",
+  "private": false,
+  "description": "React bindings for the wabbit hosted wallet — drop-in <WabbitProvider>, useWabbit(), and <WabbitLoginButton> for any React site.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch"
+  },
+  "dependencies": {
+    "wabbit-sdk": "file:../wabbit-sdk"
+  },
+  "peerDependencies": {
+    "@bsv/sdk": "^2.0.13",
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "~5.6"
+  }
+}

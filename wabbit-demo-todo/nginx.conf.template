@@ -1,0 +1,30 @@
+server {
+  listen ${PORT};
+  server_name _;
+  root /usr/share/nginx/html;
+  index index.html;
+
+  # Force HTTPS for a year (Cloud Run is always HTTPS at the edge).
+  add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+  add_header Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()" always;
+
+  # The demo frames the wallet origin — make that explicit in the CSP.
+  add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; font-src 'self'; frame-src https://*.run.app https://*.babbage.systems http://127.0.0.1:5173; child-src https://*.run.app https://*.babbage.systems http://127.0.0.1:5173; object-src 'none'; base-uri 'self'; form-action 'self'" always;
+
+  location /assets/ {
+    expires 1y;
+    add_header Cache-Control "public, immutable";
+    try_files $uri =404;
+  }
+
+  location = /index.html {
+    add_header Cache-Control "no-store, must-revalidate";
+    try_files $uri =404;
+  }
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+}
