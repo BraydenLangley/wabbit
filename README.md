@@ -257,7 +257,7 @@ identities**, and treat the demos here as exactly that: demos.
 
 ## License
 
-[Open BSV License v4](./LICENSE) © Peer-to-peer Privacy Systems Research, LLC.
+[Open BSV License v4](./LICENSE).
 
 Published as a proof of concept and PSA — read the
 [Security limitations](#security-limitations) section before deploying this in
