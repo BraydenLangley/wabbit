@@ -248,5 +248,8 @@ identities**, and treat the demos here as exactly that: demos.
 
 ## License
 
-Internal — Project Babbage / p2ppsr. Not for redistribution while the security
-caveats above remain unaddressed.
+[Open BSV License v4](./LICENSE) © Peer-to-peer Privacy Systems Research, LLC.
+
+Published as a proof of concept and PSA — read the
+[Security limitations](#security-limitations) section before deploying this in
+front of valuable identities.
